@@ -1,10 +1,8 @@
-module AD.Differentiable where
+module AD.Differentiable (module AD.Differentiable) where
 
 import Control.Apply
 import Math as M
 import Prelude
-
--- Number wrapping
 
 class (EuclideanRing n) <= Differentiable n where
   sin  :: n -> n
@@ -20,8 +18,6 @@ class (EuclideanRing n) <= Differentiable n where
   sqrt :: n -> n
   recip :: n -> n
 
-infix 3 pow as ^
-  
 instance differentiableNumber :: Differentiable Number where
   sin  = M.sin
   sqr x = x * x
@@ -34,4 +30,4 @@ instance differentiableNumber :: Differentiable Number where
   acos = M.acos
   atan = M.atan
   sqrt = M.sqrt
-  recip n = (1.0/n)
+  recip n = 1.0 / n
